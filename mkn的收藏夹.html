@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MKN的收藏夹（带关键词搜索）</title>
+  <style>
+    /* 基本样式 */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul ul {
+      display: none;
+      margin-left: 20px;
+    }
+
+    li {
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    li.active {
+      color: blue;
+    }
+
+    /* 搜索框样式 */
+    #searchBox {
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 获取搜索框元素
+      var searchInput = document.getElementById('searchInput');
+      // 获取展开所有按钮元素
+      var expandAllBtn = document.getElementById('expandAllBtn');
+      // 获取折叠所有按钮元素
+      var collapseAllBtn = document.getElementById('collapseAllBtn');
+      
+      // 为搜索框添加输入事件处理程序
+      searchInput.addEventListener('input', function () {
+        var keyword = searchInput.value.toLowerCase();
+        var categoryItems = document.querySelectorAll('li');
+        var expandedParents = [];
+
+        // 遍历所有的分类名称元素
+        categoryItems.forEach(function (item) {
+          var categoryText = item.textContent.toLowerCase();
+          var subList = item.querySelector('ul');
+
+          // 判断是否包含关键字
+          if (categoryText.includes(keyword)) {
+            item.style.display = 'block';
+            expandParent(item, expandedParents);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // 展开父节点
+        expandedParents.forEach(function (parent) {
+          var subList = parent.querySelector('ul');
+          if (subList) {
+            subList.style.display = 'block';
+            parent.classList.add('active');
+          }
+        });
+      });
+
+      // 获取所有的分类名称元素
+      var categoryItems = document.querySelectorAll('li');
+
+      // 为每个分类名称元素添加点击事件处理程序
+      categoryItems.forEach(function (item) {
+        var subList = item.querySelector('ul');
+
+        item.addEventListener('click', function (event) {
+          if (!event.target.closest('a')) {
+            event.stopPropagation();
+
+            if (subList) {
+              subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
+              item.classList.toggle('active');
+            }
+          }
+        });
+      });
+
+      // 展开所有节点
+      expandAllBtn.addEventListener('click', function () {
+        categoryItems.forEach(function (item) {
+          var subList = item.querySelector('ul');
+          if (subList) {
+            subList.style.display = 'block';
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // 折叠所有节点
+      collapseAllBtn.addEventListener('click', function () {
+        categoryItems.forEach(function (item) {
+          var subList = item.querySelector('ul');
+          if (subList) {
+            subList.style.display = 'none';
+            item.classList.remove('active');
+          }
+        });
+      });
+
+      // 递归展开父节点
+      function expandParent(item, expandedParents) {
+        var parent = item.parentNode.parentNode;
+        if (parent.tagName.toLowerCase() === 'li') {
+          parent.style.display = 'block';
+          expandedParents.push(parent);
+          expandParent(parent, expandedParents);
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>MKN的收藏夹（带关键词搜索）</h1>
+  <div>
+    <input type="text" id="searchInput" placeholder="输入关键字搜索">
+    <button id="expandAllBtn">全部展开</button>
+    <button id="collapseAllBtn">全部折叠</button>
+  </div>
+  
+  <ul>
+    <li>信息收集
+      <ul>
+          <li>域名信息查询：whois
+              <ul>
+                    <li><a href="https://whois.aliyun.com/" target="_blank">阿里云域名信息查询</a></li>
+                    <li><a href="https://whois.chinaz.com/" target="_blank">站长之家域名信息查询</a></li>
+                    <li><a href="https://www.itdog.cn/ping/" target="_blank">IT狗全国ping测试</a></li>
+                    <li><a href="https://www.boce.com/ping" target="_blank">拨测全国ping测试</a></li>
+                    
+                    <li><a href="https://dnsdumpster.com/" target="_blank">dumpster子域名查询</a></li>  
+                    <li><a href="https://tool.chinaz.com/subdomain" target="_blank">站长之家子域名查询</a></li>                      
+                    <li><a href="https://crt.sh/" target="_blank">证书查询</a></li>                     
+              </ul>
+          </li>
+
+
+          
+          
+
+
+
+
+
+          <li>备案信息查询
+              <ul>
+                    <li><a href="https://icp.aizhan.com/" target="_blank">爱站网备案信息查询</a></li>
+                    <li><a href="https://icp.chinaz.com/" target="_blank">站长之家备案信息查询</a></li>
+                    <li><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">国家ICP备案信息查询</a></li>
+              </ul>
+          </li>
+          <li>企业信息查询
+              <ul>
+                    <li><a href="https://www.tianyancha.com/" target="_blank">天眼查企业信息查询</a></li>
+
+              </ul>
+          </li>
+
+
+          <li>资产检索
+              <ul>
+                    <li><a href="https://fofa.info/" target="_blank">资产检索-FOFA搜索引擎</a></li>
+              </ul>
+          </li>
+
+
+
+          
+          
+      </ul>
+    </li>
+    <li>安全相关的网站
+      <ul>
+        <li><a href="https://tool.lu/crontab/" target="_blank">crontab使用教程</a></li>
+        <li><a href="https://www.exploit-db.com/google-hacking-database" target="_blank">Google搜索语法网站</a></li>
+      </ul>
+    </li>
+    <li>工具网站
+        <ul>
+            <li><a href=" http://coolaf.com/tool/port" target="_blank">IP端口在线检测</a></li>
+
+        </ul>
+    </li>
+
+   
+    <!-- mkn建议最后作为命令保存的位置 -->
+    <li>杂项
+        <ul>
+            <li>常见linux命令
+                <ul>
+                     <li><a href="#">域名信息查询：whois aaa.cn</a></li>
+                     <li><a href="#">IP反查域名：使用-x 参数 IP 反查域名： dig -x 114.114.114.114</a></li>
+                     <li><a href="#">查询所有的DNS信息： dig @114.114.114.114 www.microsoft.com any</a></li>      
+                     <li><a href="#">带DNS服务器查DNS信息： dig @114.114.114.114 www.microsoft.com</a></li>  
+                     <li><a href="#">dig直接查询DNS信息： dig www.microsoft.com </a></li>  
+                     <li><a href="#">nslookup查询DNS信息： nslookup www.microsoft.com </a></li>  
+                     <li><a href="#">目录扫描： dirb www.microsoft.com </a></li>   
+                     <li><a href="#">windows远程连接工具：mstsc.exe </a></li>                       
+                </ul>
+            </li>  
+            <li>FOFA搜索引擎的使用
+                <ul>
+                    <li><a href="#">通过ip查询：ip="1.1.1.1"</a></li>
+                    <li><a href="#">通过IPv4 C段进行查询:ip="220.181.111.1/24"</a></li>
+                    <li><a href="#">通过单一Ipv6地址进行查询:ip="2600:9000:202a:2600:18:4ab7:f600:93a1"</a></li>      
+                    <li><a href="#">通过端口号进行查询:port="6379"</a></li>  
+                    <li><a href="#">通过主机名进行查询:host=".fofa.info"</a></li>  
+                    <li><a href="#">通过操作系统进行查询:os="centos"</a></li>  
+                    <li><a href="#">通过服务器进行查询:server="Microsoft-IIS/10"</a></li>   
+                    <li><a href="#">筛选拥有域名的资产：is_domain=true</a></li>                      
+                    <li><a href="#">筛选是ipv6的资产：is_ipv6=true</a></li>
+                    <li><a href="#">通过网站标题进行查询：title="beijing"</a></li>
+                    <li><a href="#">通过响应标头进行查询：header="elastic"</a></li>
+                    <li><a href="#">通过http/https响应头计算的hash值进行查询：header_hash="1258854265"</a></li>
+                    <li><a href="#">通过HTML正文进行查询：body="网络空间测绘"</a></li>
+                    <li><a href="#">通过HTML正文计算的hash值进行查询：body_hash="-2090962452"</a></li>
+                    <li><a href="#">通过HTML正文包含的JS进行查询：js_name="js/jquery.js"</a></li>
+                    <li><a href="#">通过JS源码进行查询：js_md5="82ac3f14327a8b7ba49baa208d4eaa15"</a></li>
+                    <li><a href="#">通过别名记录进行查询：cname="ap21.inst.siteforce.com"</a></li>
+                    <li><a href="#">通过别名记录解析的主域名进行查询：cname_domain="siteforce.com"</a></li>
+                    <li><a href="#">通过网站图标的hash值进行查询：icon_hash="-247388890"</a></li>
+                    <li><a href="#">筛选服务状态为402的服务（网站）资产：status_code="402"</a></li>
+                    <li><a href="#">通过HTML正文包含的ICP备案号进行查询：icp="京ICP证030173号"</a></li>
+                    <li><a href="#">通过网站嵌入的第三方代码计算的hash值进行查询：sdk_hash=="Mkb4Ms4R96glv/T6TRzwPWh3UDatBqeF"</a></li>
+                    <li><a href="#">通过国家的简称代码进行查询：country="CN"</a></li>
+                    <li><a href="#">通过省份/地区英文名称进行查询：region="Zhejiang"</a></li>
+                    <li><a href="#">通过城市英文名称进行查询：city="Hangzhou"</a></li>
+                    <li><a href="#">通过证书进行查询：cert="baidu"</a></li>
+                    <li><a href="#">通过证书的持有者进行查询：cert.subject="Oracle Corporation"</a></li>
+                    <li><a href="#">通过证书的颁发者进行查询：cert.issuer="DigiCert"</a></li>
+                    <li><a href="#">通过证书持有者的组织进行查询：cert.subject.org="Oracle Corporation"</a></li>
+                    <li><a href="#">通过证书持有者的通用名称进行查询：cert.subject.cn="baidu.com"</a></li>
+                    <li><a href="#">通过证书颁发者的组织进行查询：cert.issuer.org="cPanel, Inc."</a></li>
+                    <li><a href="#">通过证书颁发者的通用名称进行查询：cert.issuer.cn="Synology Inc. CA"</a></li>
+                    <li><a href="#">筛选证书是有效证书的资产：cert.is_valid=true</a></li>
+                    <li><a href="#">筛选某一时间之后有更新的资产：after="2023-01-01"</a></li>
+                    <li><a href="#">筛选某一时间之前有更新的资产：before="2023-12-01"</a></li>
+                    <li><a href="#">筛选某一时间区间有更新的资产：after="2023-01-01" && before="2023-12-01"</a></li>
+                    <li><a href="#">筛选开放端口数量等于6个的独立IP：port_size="6"</a></li>
+                    <li><a href="#">筛选开放端口数量大于6个的独立IP：port_size_gt="6"</a></li>
+                    <li><a href="#">筛选开放端口数量小于12个的独立IP：port_size_lt="12"</a></li>
+                    <li><a href="#">筛选同时开放不同端口的独立IP：ip_ports="80,161"</a></li>
+                    <li><a href="#">通过国家的简称代码进行查询独立IP：ip_country="CN"</a></li>
+                    <li><a href="#">通过省份/地区英文名称进行查询独立IP：ip_region="Zhejiang"</a></li>
+                    <li><a href="#">通过城市英文名称进行查询独立IP：ip_city="Hangzhou"</a></li>
+                    <li><a href="#">筛选某一时间之后有更新的独立IP：ip_after="2021-03-18"</a></li>
+                    <li><a href="#">筛选某一时间之前有更新的独立IP：ip_before="2019-09-09"</a></li>
+	
+                </ul>
+            </li>
+            <li>基于 ping 命令的探测
+                <ul>
+                    <!-- PING 命令是我们常用的判断主机之间网络是否畅通，同样也是能判断我们的目标主机是否存活。 -->
+                    <li><a href="#">发送一个探测包检查是否畅通：ping 192.168.1.1 -c 1</a></li>
+                    <!-- 我们怎么才能知道中间经过了哪些网络设备 -->
+                    <li><a href="#">traceroute www.baidu.com</a></li>
+                    <li><a href="#">windows 下查看 MAC 地址：ipconfig /all</a></li>      
+                    <li><a href="#">通过端口号进行查询:port="6379"</a></li>  
+                    <li><a href="#">通过主机名进行查询:host=".fofa.info"</a></li>  
+                    <li><a href="#">通过操作系统进行查询:os="centos"</a></li>  
+                    <li><a href="#">通过服务器进行查询:server="Microsoft-IIS/10"</a></li>   
+                    <li><a href="#">筛选拥有域名的资产：is_domain=true</a></li>                      
+                    <li><a href="#">筛选是ipv6的资产：is_ipv6=true</a></li>
+                </ul>
+            </li>
+            <li>个人定制的linux命令
+                <ul>
+                     <!-- arping 命令来判断局域网中是否存在arp攻击 -->
+                     <li><a href="#">内网ARP攻击溯源：for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | sort -u </a></li>   
+                     <li><a href="#">内网ARP攻击溯源： for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | sort | uniq </a></li> 
+                     <li><a href="#">内网ARP攻击溯源： for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | awk '!a[$0]++' </a></li> 
+                     <li><a href="#">更新searchsploit数据库： searchsploit -u </a></li>  
+                </ul>
+            </li>  
+
+
+
+            <!------>
+        </ul>
+    </li>
+  </ul>
+</body>
+</html>
+
+
