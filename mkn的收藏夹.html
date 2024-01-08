@@ -203,6 +203,7 @@
         <li><a href="https://forum.ywhack.com/index.php" target="_blank">棱角社区-安全社区</a></li>
         <li><a href="https://www.hackjie.com/" target="_blank">黑客街-安全社区</a></li>
         <li><a href="http://blog.51yip.com/" target="_blank">编程命令学习</a></li>
+        <li><a href="https://www.ctfiot.com/" target="_blank">ctfiot导航</a></li>
         <li><a href="http://manual.51yip.com/php/" target="_blank">PHP学习</a></li>
         <li><a href="http://linux.51yip.com/search/yum" target="_blank">linux命令学习</a></li>       
         
@@ -248,7 +249,15 @@
             <li>常见漏洞库搜索
                 <ul>
                     <li><a href="https://avd.aliyun.com/" target="_blank">阿里云漏洞库</a></li>
-                    <li><a href="https://www.exploit-db.com/searchsploit/" target="_blank">漏洞搜索网站</a></li>
+                    <li><a href="https://www.exploit-db.com/searchsploit/" target="_blank">美国著名安全公司 Offensive Security 的漏洞库</a></li>
+                    <li><a href="http://www.securityfocus.com" target="_blank">赛门铁克的漏洞库</a></li>
+                    <li><a href="http://www.cnvd.org.cn/" target="_blank">国家信息安全漏洞共享平台</a></li>
+                    <li><a href="http://www.nsfocus.net" target="_blank">国内安全厂商——绿盟科技漏洞库</a></li>
+                    <li><a href="https://www.securitylab.ru/vulnerability/" target="_blank">俄罗斯知名安全实验室</a></li>
+                    <li><a href="http://cve.mitre.org" target="_blank">CVE 常见漏洞和披露</a></li>
+                    <li><a href="https://www.anquanke.com/" target="_blank">安全客</a></li>
+                    <li><a href="https://nvd.nist.gov/" target="_blank">美国国家信息安全漏洞库</a></li>
+                    <li><a href="https://www.seebug.org/" target="_blank">知道创宇漏洞库</a></li>
                 </ul>
             </li>
             <li>云检测与分析
@@ -348,8 +357,28 @@
                     <li><a href="#">查找指定站点信息：   info:www.google.com</a></li>
                     <li><a href="#">搜索 Google 里的内容缓存：   cache:baidu.com</a></li>
                     <li><a href="#">实战搜索登录地址：   inurl:/admin.php</a></li>
-
-                    
+                    <li><a href="#">实战搜索登录地址：   intitle:index.of .git</a></li>
+                    <li><a href="#">敏感信息搜索:site:abc.com ( "默认密码" OR "学号" OR "工号")</a></li>
+                    <li><a href="#">后台接口和敏感信息探测:site:abc.com (inurl:login OR inurl:admin OR inurl:index OR inurl:登录) OR (inurl:config | inurl:env | inurl:setting | inurl:backup | inurl:admin | inurl:php)</a></li>
+                    <li><a href="#">查找暴露的特殊文件:site:abc.com filetype:txt OR filetype:xls OR filetype:xlsx OR filetype:doc OR filetype:docx OR filetype:pdf</a></li>
+                    <li><a href="#">已公开的 XSS 和重定向漏洞:site:openbugbounty.org inurl:reports intext:"abc.com"</a></li>
+                    <li><a href="#">常见的敏感文件扩展:site:abc.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess</a></li>
+                    <li><a href="#">XSS 漏洞倾向参数:inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:abc.com</a></li>
+                    <li><a href="#">重定向漏洞倾向参数:inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:abc.com</a></li>
+                    <li><a href="#">SQL 注入倾向参数:inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:abc.com</a></li>
+                    <li><a href="#">SSRF 漏洞倾向参数:inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:abc.com</a></li>
+                    <li><a href="#">本地文件包含（LFI）倾向参数:inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:abc.com</a></li>
+                    <li><a href="#">远程命令执行（RCE）倾向参数:inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:abc.com</a></li>
+                    <li><a href="#">敏感参数:inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:abc.com</a></li>
+                    <li><a href="#">API 文档:inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:abc.com</a></li>
+                    <li><a href="#">代码泄露:site:pastebin.com "abc.com"</a></li>
+                    <li><a href="#">云存储:site:s3.amazonaws.com "abc.com"</a></li>
+                    <li><a href="#">JFrog Artifactory:site:jfrog.io "abc.com"</a></li>
+                    <li><a href="#">Firebase:site:firebaseio.com "abc.com"</a></li>
+                    <li><a href="#">文件上传端点:site:abc.com "choose file"</a></li>
+                    <li><a href="#">漏洞赏金和漏洞披露程序:"submit vulnerability report" | "powered by bugcrowd" | "powered by hackerone" site:*/security.txt "bounty"</a></li>
+                    <li><a href="#">暴露的 Apache 服务器状态:site:*/server-status apache</a></li>
+                    <li><a href="#">WordPress:inurl:/wp-admin/admin-ajax.php</a></li>
                 </ul>
             </li>
             <li>基于 ping 命令的探测
