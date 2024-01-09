@@ -390,23 +390,44 @@
                     <li><a href="#">windows 下查看 MAC 地址：ipconfig /all</a></li>      
                 </ul>
             </li>
-            <li>个人定制的linux命令
+            <li>window溯源命令
+                <ul>
+                     <li><a href="#">查看自己电脑与哪些IP建立了连接：netstat -ano | findstr ESTABLISHED</a></li>  
+                     <li><a href="#">发现可疑IP，通过进程ID查询运行的是哪个程序：tasklist | findstr 25748</a></li>  
+                     <li><a href="#">获取程序全路径名：wmic process where processid=25748 get processid,executablepath,name</a></li>  
+                     <li><a href="#">也可以通过：微步在线X情报社区 https://x.threatbook.com/查询IP相关信息</a></li>
+                </ul>
+            </li>  
+            <li>linux溯源命令
                 <ul>
                      <!-- arping 命令来判断局域网中是否存在arp攻击 -->
                      <li><a href="#">内网ARP攻击溯源：for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | sort -u </a></li>   
                      <li><a href="#">内网ARP攻击溯源： for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | sort | uniq </a></li> 
                      <li><a href="#">内网ARP攻击溯源： for ((i=1; i<=5; i++)); do ip="192.168.1.$i"; arping -c 4 $ip; done | grep index | awk '{print $4,$5}' | awk '!a[$0]++' </a></li> 
-                     <li><a href="#">查看自己电脑与哪些IP建立了连接：netstat -ano | findstr ESTABLISHED</a></li>  
-                     <li><a href="#">发现可疑IP，通过进程ID查询运行的是哪个程序：tasklist | findstr 25748</a></li>  
-                     <li><a href="#">获取程序全路径名：wmic process where processid=25748 get processid,executablepath,name</a></li>  
-                     <li><a href="#">也可以通过：微步在线X情报社区 https://x.threatbook.com/查询IP相关信息</a></li>
                      <li><a href="#">更新searchsploit数据库： searchsploit -u </a></li>
+                     <!-- linux关闭未知端口的服务 -->
+                     <li><a href="#">你认识这个服务，直接关服务：systemctl stop rpcbind </a></li>
+                     <li><a href="#">你不认识这个服务，查看 22 端口正在被哪个进程使用：lsof -i :22</a></li>
+                     <li><a href="#">你不认识这个服务，通过 ps 命令查找对应的进程文件：ps -axu | grep 1089</a></li>    
+                     <li><a href="#">你不认识这个服务，通过 which 命令查找对应的进程文件：which vim</a></li>  
+                     <li><a href="#">你不认识这个服务，找到PID文件后直接关闭bash： kill -9 1089</a></li>  
+                    
                 </ul>
-            </li>  
+            </li> 
+            <li>在线扫雷
+                <ul>
+                     <li><a href="#">在线扫雷https://play.m3o.xyz/</a></li>   
+                     <li><a href="#">h.的坐标：E2G S3VD</a></li> 
+                     <li><a href="#">mkn的坐标：E6H S5UL</a></li> 
+
+                    
+                </ul>
+            </li> 
+
+            h.的坐标：E2G S3VD
 
 
 
-            <!------>
         </ul>
     </li>
   </ul>
