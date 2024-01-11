@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命令生成器</title>
+  <style>
+    /* 样式可以根据需要自行修改 */
+  </style>
+</head>
+<body>
+  <h2>命令生成器</h2>
+
+  <label for="ipInput">输入目标IP地址：</label>
+  <input type="text" id="ipInput" value="192.168.1.100">
+  <button onclick="generateCommands()">生成命令</button>
+  <button onclick="clearInput()">清空</button>
+
+  <h3>模糊查询结果</h3>
+  <label for="searchInput">模糊查询：</label>
+  <input type="text" id="searchInput" oninput="filterResults()">
+
+  <ul id="resultList">
+    <!-- 这里将显示模糊查询的结果 -->
+  </ul>
+
+  <script>
+    // 示例数据
+    var allResults = [
+        //收藏的网站
+      { command: 'https://mogua.co/', description: '“摸瓜，取自顺藤摸瓜，比喻沿着发现的线索追究根底。”可疑APP查验网站'},
+      { command: 'https://www.yuque.com/again-719bb/pfhi8f/gbe4ms53sp3m1mpt', description: '“小T的文章学习'},
+      
+
+
+
+      //metasploit命令
+      { command: 'msfdb reinit', description: '“重置数据库-metasploit'},
+
+      
+      { command: 'hosts', description: '“展示数据库中的历史信息-metasploit'},
+      { command: 'hosts -h', description: '“展示帮助信息-metasploit'},
+      { command: 'hosts -d', description: '“删除数据库中对应的主机的信息-metasploit'},
+      { command: 'hosts -a ', description: '添加一个或多个主机地址到当前工作空间。'},
+      { command: 'hosts -c ', description: '仅显示指定列（请参考下面列出的列名）。'},
+      { command: 'hosts -C ', description: '直到下次重启前，只显示指定的列（同样需参照列名列表）。'},
+      { command: 'hosts -i ', description: '更改某个主机的信息字段。'},
+      { command: 'hosts -m ', description: '更改一个主机的备注信息。'},
+      { command: 'hosts -n ', description: '更改一个主机的名字。'},
+      { command: 'hosts -O ', description: '按照指定的列号排序输出结果。'},
+      { command: 'hosts -o ', description: '将输出结果以CSV格式保存至指定文件。'},
+      { command: 'hosts -R ', description: '从搜索结果中设置RHOSTS变量（远程目标主机列表）。'},
+      { command: 'hosts -S ', description: '根据提供的过滤字符串搜索主机。'},
+      { command: 'hosts -T ', description: '从一系列主机上移除指定标签。'},
+      { command: 'hosts -t ', description: '为一系列主机添加或指定标签。'},
+      { command: 'hosts -u ', description: '仅显示在线（可达）的主机。'},
+
+
+
+
+
+
+      { command: 'nmap --script=auth #IP#', description: '负责处理鉴权证书（绕开鉴权）的脚本'},
+      { command: 'nmap --script=broadcast #IP#', description: '在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务'},
+      { command: 'nmap --script=brute #IP#', description: '提供暴力破解方式，针对常见的应用如http/snmp等'},
+      { command: 'nmap --script=default #IP#', description: '使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力'},
+      { command: 'nmap --script=discovery #IP#', description: '对网络进行更多的信息，如SMB枚举、SNMP查询等'},
+      { command: 'nmap --script=dos #IP#', description: '用于进行拒绝服务攻击'},
+      { command: 'nmap --script=exploit #IP#', description: '利用已知的漏洞入侵系统'},
+      { command: 'nmap --script=external #IP#', description: '利用第三方的数据库或资源，例如进行whois解析'},
+      { command: 'nmap --script=fuzzer #IP#', description: '模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞'},
+      { command: 'nmap --script=intrusive #IP#', description: '入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽'},
+      { command: 'nmap --script=malware #IP#', description: '探测目标机是否感染了病毒、开启了后门等信息'},
+      { command: 'nmap --script=safe #IP#', description: '此类与intrusive相反，属于安全性脚本'},
+      { command: 'nmap --script=version #IP#', description: '负责增强服务与版本扫描（VersionDetection）功能的脚本'},
+      { command: 'nmap --script=vuln #IP#', description: '负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067'},
+      { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' }
+      // 其他结果...
+    ];
+
+    function generateCommands() {
+      // 清空之前的结果
+      var commandList = document.getElementById('resultList');
+      commandList.innerHTML = '';
+
+      // 获取输入的IP地址
+      var ip = document.getElementById('ipInput').value;
+
+      // 根据输入的IP地址生成实际的命令和描述
+      var generatedResults = allResults.map(function(result) {
+        return {
+          command: result.command.replace('#IP#', ip),
+          description: result.description.replace('#IP#', ip)
+        };
+      });
+
+      // 显示生成的命令结果
+      showResults(generatedResults);
+    }
+
+    function showResults(results) {
+      // 显示生成的命令结果
+      var commandList = document.getElementById('resultList');
+      commandList.innerHTML = '';
+      results.forEach(function(result) {
+        var listItem = document.createElement('li');
+        listItem.textContent = result.command + ' - ' + result.description;
+
+        var copyButton = document.createElement('button');
+        copyButton.textContent = "复制";
+        copyButton.addEventListener('click', function() {
+          copyToClipboard(result.command);
+        });
+
+        listItem.appendChild(copyButton);
+        commandList.appendChild(listItem);
+      });
+    }
+
+    function filterResults() {
+      // 获取输入的查询关键词
+      var keyword = document.getElementById('searchInput').value;
+
+      // 根据关键词过滤结果
+      var filteredResults = allResults.filter(function(result) {
+        return result.command.includes(keyword) || result.description.includes(keyword);
+      }).map(function(result) {
+        return {
+          command: result.command.replace('#IP#', document.getElementById('ipInput').value),
+          description: result.description.replace('#IP#', document.getElementById('ipInput').value)
+        };
+      });
+
+      // 显示查询筛选结果
+      showResults(filteredResults);
+    }
+
+    function copyToClipboard(text) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    }
+
+    function clearInput() {
+      document.getElementById('ipInput').value = "";
+      document.getElementById('resultList').innerHTML = "";
+    }
+  </script>
+</body>
+</html>
