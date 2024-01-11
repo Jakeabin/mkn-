@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命令生成器</title>
+  <style>
+    /* 样式可以根据需要自行修改 */
+  </style>
+</head>
+<body>
+  <h2>命令生成器</h2>
+
+  <label for="ipInput">输入目标IP地址：</label>
+  <input type="text" id="ipInput" value="192.168.1.100">
+  <button onclick="generateCommands()">生成命令</button>
+  <button onclick="clearInput()">清空</button>
+
+  <h3>模糊查询结果</h3>
+  <label for="searchInput">模糊查询：</label>
+  <input type="text" id="searchInput" oninput="filterResults()">
+
+  <ul id="resultList">
+    <!-- 这里将显示模糊查询的结果 -->
+  </ul>
+
+  <script>
+    var allResults = [
+      { command: 'ping 192.168.1.100', description: '用于SSH测试连接' },
+      { command: 'ssh@192.168.1.100', description: '用于SSH连接' }
+    ];
+
+    function generateCommands() {
+      // 获取输入的IP地址
+      var ip = document.getElementById('ipInput').value;
+
+      // 生成ping和ssh命令
+      var pingCommand = 'ping ' + ip;
+      var sshCommand = 'ssh@' + ip;
+
+      // 显示生成的命令
+      var commandList = document.getElementById('resultList');
+      commandList.innerHTML = '<li>' + pingCommand + '</li><li>' + sshCommand + '</li>';
+    }
+
+    function filterResults() {
+      // 获取输入的查询关键词
+      var keyword = document.getElementById('searchInput').value;
+
+      // 根据关键词过滤结果（区分大小写）
+      var filteredResults = allResults.filter(function(result) {
+        return result.command.includes(keyword) || result.description.includes(keyword);
+      });
+
+      // 显示查询结果
+      var resultList = document.getElementById('resultList');
+      resultList.innerHTML = '';
+      filteredResults.forEach(function(result) {
+        var listItem = document.createElement('li');
+        listItem.textContent = result.command + ' - ' + result.description;
+        listItem.onclick = function() {
+          // 单击复制到剪贴板
+          copyToClipboard(result.command);
+        };
+        resultList.appendChild(listItem);
+      });
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        console.log('已复制到剪贴板：' + text);
+      }, function(err) {
+        console.error('复制失败：', err);
+      });
+    }
+
+    function clearInput() {
+      document.getElementById('ipInput').value = '';
+    }
+  </script>
+</body>
+</html>
