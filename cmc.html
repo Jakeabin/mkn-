@@ -34,32 +34,70 @@
 
 
 
-      //metasploit命令
+      //metasploit下的命令
       { command: 'msfdb reinit', description: '“重置数据库-metasploit'},
-
-      
       { command: 'hosts', description: '“展示数据库中的历史信息-metasploit'},
-      { command: 'hosts -h', description: '“展示帮助信息-metasploit'},
+      { command: 'hosts -h', description: '“展示hosts的帮助信息-metasploit'},
       { command: 'hosts -d', description: '“删除数据库中对应的主机的信息-metasploit'},
-      { command: 'hosts -a ', description: '添加一个或多个主机地址到当前工作空间。'},
-      { command: 'hosts -c ', description: '仅显示指定列（请参考下面列出的列名）。'},
-      { command: 'hosts -C ', description: '直到下次重启前，只显示指定的列（同样需参照列名列表）。'},
-      { command: 'hosts -i ', description: '更改某个主机的信息字段。'},
-      { command: 'hosts -m ', description: '更改一个主机的备注信息。'},
-      { command: 'hosts -n ', description: '更改一个主机的名字。'},
-      { command: 'hosts -O ', description: '按照指定的列号排序输出结果。'},
-      { command: 'hosts -o ', description: '将输出结果以CSV格式保存至指定文件。'},
-      { command: 'hosts -R ', description: '从搜索结果中设置RHOSTS变量（远程目标主机列表）。'},
-      { command: 'hosts -S ', description: '根据提供的过滤字符串搜索主机。'},
-      { command: 'hosts -T ', description: '从一系列主机上移除指定标签。'},
-      { command: 'hosts -t ', description: '为一系列主机添加或指定标签。'},
-      { command: 'hosts -u ', description: '仅显示在线（可达）的主机。'},
+      { command: 'hosts -a ', description: '添加一个或多个主机地址到当前工作空间。-metasploit'},
+      { command: 'hosts -c ', description: '仅显示指定列（请参考下面列出的列名）。-metasploit'},
+      { command: 'hosts -C ', description: '直到下次重启前，只显示指定的列（同样需参照列名列表）-metasploit'},
+      { command: 'hosts -i ', description: '更改某个主机的信息字段。-metasploit'},
+      { command: 'hosts -m ', description: '更改一个主机的备注信息。-metasploit'},
+      { command: 'hosts -n ', description: '更改一个主机的名字。-metasploit'},
+      { command: 'hosts -O ', description: '按照指定的列号排序输出结果。-metasploit'},
+      { command: 'hosts -o ', description: '将输出结果以CSV格式保存至指定文件。-metasploit'},
+      { command: 'hosts -R ', description: '从搜索结果中设置RHOSTS变量（远程目标主机列表）。-metasploit'},
+      { command: 'hosts -S ', description: '根据提供的过滤字符串搜索主机。-metasploit'},
+      { command: 'hosts -T ', description: '从一系列主机上移除指定标签。-metasploit'},
+      { command: 'hosts -t ', description: '为一系列主机添加或指定标签。-metasploit'},
+      { command: 'hosts -u ', description: '仅显示在线（可达）的主机。-metasploit'},
+      { command: 'db_import /root/1_100.xml', description: '数据库文件导入-metasploit'},
+      { command: 'db_export -f xml /root/msf_bak.xml', description: '数据库文件导出方便别人导入-metasploit'},
+      { command: 'services -a ', description: ' --add：添加服务而非搜索。-metasploit'},
+      { command: 'services -c ', description: ' --column <col1col2>：仅显示指定列。-metasploit'},
+      { command: 'services -d ', description: ' --delete：删除服务而非搜索。-metasploit'},
+      { command: 'services -h ', description: ' --help：显示此帮助信息。-metasploit'},
+      { command: 'services -O ', description: ' --order <column id>：按指定列号排序行。-metasploit'},
+      { command: 'services -o ', description: ' --output <filename>：以CSV格式将输出发送至文件。-metasploit'},
+      { command: 'services -p ', description: ' --port <ports>：搜索一组端口。-metasploit'},
+      { command: 'services -r ', description: ' --protocol <protocol>：待添加服务的协议类型（[tcp|udp]）。-metasploit'},
+      { command: 'services -R ', description: ' --rhosts：从搜索结果中设置RHOSTS与显示服务信息。-metasploit'},
+      { command: 'services -s ', description: ' --name <name>：待添加服务的名称。-metasploit'},
+      { command: 'services -S ', description: ' --search <filter>：用于过滤的搜索字符串。-metasploit'},
+      { command: 'services -u ', description: ' --up：仅显示处于活动状态（up）的服务。-metasploit'},
+      { command: 'services -U ', description: ' --update：更新现有服务的数据。-metasploit'},
+      { command: 'msf6 > help  ', description: ' 查看msf6的帮助信息 。-metasploit'},
+       { command: 'searchsploit -u', description: '  更新数据库中的漏洞利用信息 。-metasploit'},    
+
+      //网络发现命令
+      { command: 'netdiscover -i eth0 -r 192.168.1.0/24', description: '“主动网络发现-netdiscover'},
+      { command: 'netdiscover -p', description: '“被动网络发现-netdiscover'},
+      { command: 'netdiscover -i ', description: '设备：指定你的网络设备名称'},
+      { command: 'netdiscover -r ', description: '范围：扫描指定的IP范围，而不是自动扫描。例如：192.168.6.0/24,/16,/8'},
+      { command: 'netdiscover -l ', description: '文件：从给定文件中扫描一系列的IP范围'},
+      { command: 'netdiscover -p ', description: '被动模式：不发送任何数据包，仅嗅探'},
+      { command: 'netdiscover -m ', description: '文件：扫描一个已知MAC地址和主机名列表'},
+      { command: 'netdiscover -F ', description: '过滤器：自定义pcap过滤表达式（默认值："arp"）'},
+      { command: 'netdiscover -s ', description: '时间：在每次ARP请求之间休眠的时间（单位：毫秒）'},
+      { command: 'netdiscover -c ', description: '次数：每个ARP请求发送的次数（适用于网络存在丢包情况）'},
+      { command: 'netdiscover -n ', description: '节点：用于扫描的最后一段IP地址的八进制数（范围从2到253）'},
+      { command: 'netdiscover -d ', description: '忽略家庭配置文件以进行自动扫描和快速模式'},
+      { command: 'netdiscover -f ', description: '启用快速模式扫描，节省大量时间，推荐用于自动扫描'},
+      { command: 'netdiscover -P ', description: '以适合其他程序解析的格式打印结果，并在完成主动扫描后停止'},
+      { command: 'netdiscover -L ', description: '类似于-P，但在完成主动扫描后继续监听'},
+      { command: 'netdiscover -N ', description: '不打印头部信息。仅当启用-P或-L时有效。'},
+      { command: 'netdiscover -s ', description: '启用在每个请求之间的休眠时间抑制（硬核模式）'},
+
+      //默认密码
+      { command: 'telecomadmin/nE7jA%5m', description: '“电信光猫-默认密码'},
+      { command: 'admin/HFish2021', description: '“HFish-默认密码'},
+      { command: 'admin/admin', description: '“TPlink-默认密码'},
+      { command: '/admin', description: '“TPlink空用户名-默认密码'},      
+      { command: 'msfadmin/msfadmin', description: '“Metasploitable2-Linux-默认密码'},
 
 
-
-
-
-
+      //nmap脚本命令
       { command: 'nmap --script=auth #IP#', description: '负责处理鉴权证书（绕开鉴权）的脚本'},
       { command: 'nmap --script=broadcast #IP#', description: '在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务'},
       { command: 'nmap --script=brute #IP#', description: '提供暴力破解方式，针对常见的应用如http/snmp等'},
@@ -74,6 +112,11 @@
       { command: 'nmap --script=safe #IP#', description: '此类与intrusive相反，属于安全性脚本'},
       { command: 'nmap --script=version #IP#', description: '负责增强服务与版本扫描（VersionDetection）功能的脚本'},
       { command: 'nmap --script=vuln #IP#', description: '负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067'},
+      //
+      { command: 'nmap -sn #IP# -oX eg.xml', description: '将目标的存活信息导出到一个eg.xml文件中供metasploit数据库使用'},
+      { command: 'nmap -sV -p- -Pn -O #IP# -oX eg.xml', description: '将目标的端口以及版本以及服务信息导出到一个eg.xml文件中供metasploit数据库使用'},
+      
+      //ssh命令
       { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' }
       // 其他结果...
     ];
