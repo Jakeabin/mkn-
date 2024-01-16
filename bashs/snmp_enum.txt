@@ -1,0 +1,5 @@
+# snmp的161端口开放的时候可以使用当下命令枚举系统信息可以看到通过 snmp 协议探测到的信息非常多。如服务器硬件信息和服务器当前运行的进程，
+# 这两方面是其他扫描方式，获取不到的。
+use auxiliary/scanner/snmp/snmp_enum
+set RHOSTS 192.168.1.105
+run

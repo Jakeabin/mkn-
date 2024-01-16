@@ -1,0 +1,6 @@
+# 使用 smb_lookupsid 扫描系统用户信息（SID 枚举）
+use auxiliary/scanner/smb/smb_lookupsid
+set RHOSTS 192.168.100.32
+set SMBUser administrator
+set SMBPass rsbgx
+run

@@ -1,0 +1,4 @@
+# 使用 smb_version 基于 SMB 协议扫描版本号,设置扫描目标，注意多个目标使用逗号+空格隔开
+use auxiliary/scanner/smb/smb_version
+set RHOSTS 192.168.1.105, 192.168.1.100, 192.168.1.104, 192.168.100.32
+run

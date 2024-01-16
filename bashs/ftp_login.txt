@@ -1,0 +1,4 @@
+# FTPµÄÄäÃûµÇÂ¼anonymous
+use auxiliary/scanner/ftp/anonymous
+set RHOSTS 192.168.1.105
+run

@@ -1,0 +1,7 @@
+# SMB 的模块中基本上都是可以配置用户名和密码的，配置了用户名和密码某些模块扫描的结果会更
+# 满足我们的需求。
+use auxiliary/scanner/smb/smb_enumshares
+set RHOSTS 192.168.100.32
+set SMBUSER administrator
+set SMBPASS rsbgx
+run

