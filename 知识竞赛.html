@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命令生成器</title>
+  <style>
+    /* 样式可以根据需要自行修改 */
+  </style>
+</head>
+<body>
+  <h2>知识竞赛</h2>
+
+  <input type="text" id="ipInput" value="">
+
+  <h3>模糊查询结果</h3>
+  <label for="searchInput">模糊查询：</label>
+  <input type="text" id="searchInput" oninput="filterResults()">
+
+  <ul id="resultList">
+    <!-- 这里将显示模糊查询的结果 -->
+  </ul>
+
+  <script>
+    var allResults = [
+       //
+      { command: '授权与合同签署、测试范围/规则/限制、法律与合规要求、风险告知与豁免，在执行任何渗透测试之前，必须获得全面、明确且具有法律效力的授权，确保所有活动都在合法、透明的前提下进行，同时保护客户和测试服务提供者的合法权益。', description: '对目标企业的应用进行渗透测试的合规流程是什么，是否需要授权，如需授权需要什么内容'},
+      { command: '渗透测试主要有三种类型，分别是黑盒测试（完全不清楚目标）、白盒测试（完全清楚目标）和灰盒测试（不是很清楚目标）', description: '“渗透测试有几种，各渗透测试的内容对应什么'},   
+
+      // 其他结果..
+      { command: '', description: '' }     
+    ];
+
+    function generateCommands() {
+      // 清空之前的结果
+      var commandList = document.getElementById('resultList');
+      commandList.innerHTML = '';
+
+      // 获取输入的IP地址
+      var ip = document.getElementById('ipInput').value;
+
+      // 根据输入的IP地址生成实际的命令和描述
+      var generatedResults = allResults.map(function(result) {
+        return {
+
+        };
+      });
+
+      // 显示生成的命令结果
+      showResults(generatedResults);
+    }
+
+    function showResults(results) {
+      // 显示生成的命令结果
+      var commandList = document.getElementById('resultList');
+      commandList.innerHTML = '';
+      results.forEach(function(result) {
+        var listItem = document.createElement('li');
+        listItem.textContent = result.command + ' - ' + result.description;
+
+        var copyButton = document.createElement('button');
+        copyButton.textContent = "复制";
+        copyButton.addEventListener('click', function() {
+          copyToClipboard(result.command);
+        });
+
+        listItem.appendChild(copyButton);
+        commandList.appendChild(listItem);
+      });
+    }
+
+    function filterResults() {
+      // 获取输入的查询关键词
+      var keyword = document.getElementById('searchInput').value;
+
+      // 根据关键词过滤结果
+      var filteredResults = allResults.filter(function(result) {
+        return result.command.includes(keyword) || result.description.includes(keyword);
+      }).map(function(result) {
+        return {
+          command: result.command.replace('#IP#', document.getElementById('ipInput').value),
+          description: result.description.replace('#IP#', document.getElementById('ipInput').value)
+        };
+      });
+
+      // 显示查询筛选结果
+      showResults(filteredResults);
+    }
+
+    function copyToClipboard(text) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    }
+
+    function clearInput() {
+      document.getElementById('ipInput').value = "";
+      document.getElementById('resultList').innerHTML = "";
+    }
+  </script>
+</body>
+</html>
